@@ -6,15 +6,17 @@ Easy, DbD has 3 simple advantages:
 
 1. All players have the same game data and version
   - All skins and map data are already stored on the users' systems, they've essentially been cached
-  - Updates are required, so each player's system knows what everything looks like, and each character's rules of engagement
+  - Updates are required, so each player's system knows what everything looks like and their rules of engagement
 2. Characters are static
   - Characters do **not** change skins in-game
-    - Killer's stance (if applicable), and power status
-    - Survivors' status (`Healty` `Injured` `Dying`), and carried item
+    - Killer's stance (if applicable)
+        + Killer's power status
+    - Survivors' status (`Healty` `Injured` `Dying`)
+        + Survivors' carried item
 3. The game has a *ready-up* feature (the 5s countdown)
   - Once the 5s timer starts nothing can be changed: the map offerings (if used) can be read, decided, and produce a viable map
 
-After the 5s timer has started, the server could send back JSON data (for example) of what the map looks like, and where everything important is: players' location (5), killer's item locations (if applicable), generators' location (7), totems' location (6), chests' location (1 - 11), hooks' location (6 - 10, excluding basement), basement location, hatch location, exit gate locations (2), crows' locations, windows' locations, pallets' locations, lockers' locations, and mist level
+After the 5s timer has started, the server could send back JSON data (for example) of what the map looks like, and where everything important is: players' location (5), killer's item locations (if applicable), generators' location (7), totems' location (5), chests' location (1 - 11), hooks' location (6 - 10, excluding basement), basement location, hatch location, exit gate locations (2), crows' locations, windows' locations, pallets' locations, lockers' locations, and mist level
 
 **Example**
 
@@ -23,22 +25,22 @@ After the 5s timer has started, the server could send back JSON data (for exampl
 {
     "players": {
         "player_0": {
-            "character": "WRAITH",
+            "character": 0x02, // "WRAITH",
             "skin": {
-                "head": "putrid_cavity",
-                "body": "withering_vines",
-                "item": "oozing_spine"
+                "head": 0xE0, // Event head, "Putrid Cavity"
+                "body": 0xE0, // Event body, "Withering Vines"
+                "item": 0xE0, // Event item, "Oozing Spine"
             },
-            "addons": ["coxcombed_clapper", "the_ghost_soot"],
-            "perks": ["bloodhound", "infectious_fright", "make_your_choice", "hex_devour_hope"],
-            "offering": "ebony_mori*",
+            "addons": [0x08, 0x0F], // ["coxcombed_clapper", "the_ghost_soot"]
+            "perks": [0x20, 0x31, 0x25, 0x19], // ["bloodhound", "infectious_fright", "make_your_choice", "hex_devour_hope"],
+            "offering": 0x05, // ["ebony_mori*"]
             "location": {
                 x: 'x coordinate',
                 y: 'y coordinate',
                 z: 'z coordinate',
                 r: 'xy rotation'
             },
-            "obsession": "player_4"
+            "obsession": 0x04 // "player_4"
         },
 
         "player_1": {
@@ -188,7 +190,7 @@ After the 5s timer has started, the server could send back JSON data (for exampl
             ],
             "progress": 0,
                 // 0 - not sabotaged/broken
-                // 100 - sabotaged/broken
+                // -1 - sabotaged/broken
             "timer": 180
                 // 0 - hook is resetting
                 // 180 - hook will reset in 180s (3m)
@@ -272,7 +274,9 @@ After the 5s timer has started, the server could send back JSON data (for exampl
             "progress": 0
                 // 0 - closed
                 // 100 - open
-        }
+        },
+
+        // ...
     ]
 }
 ```
