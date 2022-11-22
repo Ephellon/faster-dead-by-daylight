@@ -137,7 +137,7 @@ After the 5s timer has started, the server could send back JSON data (for exampl
         /* filled in by the server */
     ],
 
-    /* affects game-play, neds to be read fast */
+    /* affects game-play, needs to be read fast */
     "totems": [
         /* filled in by the server */
     ],
