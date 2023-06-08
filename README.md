@@ -2,7 +2,7 @@
 **This is *only* a proof of concept. The goal is get a 5 - 10s load time for a game (10 including offerings animation).**
 
 ## How the hell do you plan on doing that?
-Easy, DbD has 3 simple advantages:
+Easy, DbD has 3 simple advantages (and an uneccessary disadvantage):
 
 1. All players have the same game data and version
   - All skins and map data are already stored on the users' systems, they've essentially been cached
