@@ -15,6 +15,10 @@ Easy, DbD has 3 simple advantages:
         + Survivors' carried item
 3. The game has a *ready-up* feature (the 5s countdown)
   - Once the 5s timer starts nothing can be changed: the map offerings (if used) can be read, decided, and produce a viable map
+4. Additionally, there is no need to "load" players into a lobby
+  - The player's screen is the same as the lobby screen... Why are they being moved?
+  - The sound notification can still be played, just load the other players onto the screen and change the angle
+    - This can be accomplished by setting a variable (`GAME_TOKEN` for example) to the connected session's ID
 
 After the 5s timer has started, the server could send back JSON data (for example) of what the map looks like, and where everything important is: players' location (5), killer's item locations (if applicable), generators' location (7), totems' location (5), chests' location (1 - 11), hooks' location (6 - 10, excluding basement), basement location, hatch location, exit gate locations (2), crows' locations, windows' locations, pallets' locations, lockers' locations, and mist level
 
